@@ -2,7 +2,7 @@ import os
 import torch
 import torch.nn as nn
 from torch.utils.data import DataLoader
-from torch.optim import AdamW
+from torch.optim import Adam
 from transformers import (
     SwinModel,
     AutoTokenizer,
@@ -21,7 +21,7 @@ from image_captioning import (
     evaluate_model,
     predict_caption,
 )
-from coco_dataset import get_coco_datasets
+from data.coco_dataset import get_coco_datasets
 
 # Ensure spaCy model is available
 try:
