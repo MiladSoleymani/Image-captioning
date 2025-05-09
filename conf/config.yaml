@@ -1,4 +1,3 @@
-"""yaml
 defaults:
   - datamodule: coco
   - model: caption
@@ -7,4 +6,3 @@ defaults:
   - _self_
 
 seed: 42
-"""
