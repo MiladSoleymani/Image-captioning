@@ -1,22 +1,22 @@
-"""toml
+title = "TOML FILE"
+
 [project]
 name = "img-cap"
 version = "0.1.0"
 description = "Image captioning pipeline – Tempest‑style layout"
 readme = "README.md"
 requires-python = ">=3.10"
-
-[project.dependencies]
-torch = "*"
-pytorch-lightning = "*"
-hydra-core = "*"
-transformers = "*"
-omegaconf = "*"
-spacy = "*"
-nltk = "*"
-tqdm = "*"
+dependencies = [
+  "torch",
+  "pytorch-lightning",
+  "hydra-core",
+  "transformers",
+  "omegaconf",
+  "spacy",
+  "nltk",
+  "tqdm",
+]
 
 [build-system]
 requires = ["setuptools>=61.0"]
 build-backend = "setuptools.build_meta"
-"""
