@@ -1,0 +1,10 @@
+"""yaml
+_target_: img_cap.data.coco_datamodule.COCODataModule
+train_json: ${oc.env:COCO_TRAIN_JSON}
+val_json:   ${oc.env:COCO_VAL_JSON}
+train_imgs: ${oc.env:COCO_TRAIN_IMGS}
+val_imgs:   ${oc.env:COCO_VAL_IMGS}
+batch_size: 16
+num_workers: 4
+max_length: 50
+"""

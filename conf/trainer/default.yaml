@@ -1,0 +1,6 @@
+"""yaml
+_target_: pytorch_lightning.Trainer
+max_epochs: 3
+gpus: 1  # set 0 for CPU only
+precision: 16  # mixed‑precision
+"""

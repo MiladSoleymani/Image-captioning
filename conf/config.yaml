@@ -1,0 +1,10 @@
+"""yaml
+defaults:
+  - datamodule: coco
+  - model: caption
+  - optimizer: adamw
+  - trainer: default
+  - _self_
+
+seed: 42
+"""

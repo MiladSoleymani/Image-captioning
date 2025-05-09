@@ -1,0 +1,4 @@
+"""yaml
+_target_: img_cap.models.lightning_module.CaptionLightningModule
+lr: 5e-5
+"""
