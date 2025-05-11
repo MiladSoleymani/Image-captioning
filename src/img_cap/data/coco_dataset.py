@@ -6,7 +6,7 @@ from typing import Any, Dict, List, Tuple
 
 from PIL import Image
 from torch.utils.data import Dataset
-from transformers import AutoImageProcessor, PreTrainedTokenizer
+from transformers import ViTFeatureExtractor, PreTrainedTokenizer
 
 
 class COCOCaptionDataset(Dataset):
@@ -20,10 +20,10 @@ class COCOCaptionDataset(Dataset):
         self,
         caption_file: str | Path,
         image_dir: str | Path,
+        feature_extractor: ViTFeatureExtractor,
         tokenizer: PreTrainedTokenizer,
         max_length: int = 50,
         sample_one_caption: bool = True,
-        processor_name: str = "google/vit-base-patch16-224",
     ) -> None:
         """
         Args
@@ -39,9 +39,9 @@ class COCOCaptionDataset(Dataset):
         super().__init__()
 
         self.image_dir = Path(image_dir)
+        self.feature_extractor = feature_extractor
         self.tokenizer = tokenizer
         self.max_length = max_length
-        self.img_processor = AutoImageProcessor.from_pretrained(processor_name)
 
         # ------------------------------------------------------------------
         # 1) Parse COCO JSON once
@@ -89,7 +89,9 @@ class COCOCaptionDataset(Dataset):
 
         # ❶ Load & preprocess image
         image = Image.open(self.id2file[img_id]).convert("RGB")
-        pix = self.img_processor(images=image, return_tensors="pt")
+
+        image_features = self.feature_extractor(images=image, return_tensors="pt")
+        image_features = {k: v.squeeze(0) for k, v in image_features.items()}
 
         # ❷ Tokenize caption
         print("self.tokenizer", self.tokenizer)
@@ -103,7 +105,7 @@ class COCOCaptionDataset(Dataset):
 
         # ❸ Package tensors (batch dim is squeezed to match original style)
         return {
-            "pixel_values": pix["pixel_values"].squeeze(0),  # (3, 224, 224)
+            "pixel_values": image_features,  # (3, 224, 224)
             "input_ids": text["input_ids"].squeeze(0),  # (L,)
             "attention_mask": text["attention_mask"].squeeze(0),
         }

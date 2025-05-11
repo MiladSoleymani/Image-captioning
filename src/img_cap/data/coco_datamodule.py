@@ -38,18 +38,18 @@ class COCODataModule(pl.LightningDataModule):
     def setup(self, stage: str | None = None):
         if stage in (None, "fit"):
             self.ds_train = COCOCaptionDataset(
-                self.hparams.train_json,
-                self.hparams.train_imgs,
-                self.feat_extractor,
-                self.tokenizer,
-                self.hparams.max_length,
+                caption_file=self.hparams.train_json,
+                image_dir=self.hparams.train_imgs,
+                feature_extractor=self.feat_extractor,
+                tokenizer=self.tokenizer,
+                max_length=self.hparams.max_length,
             )
             self.ds_val = COCOCaptionDataset(
-                self.hparams.val_json,
-                self.hparams.val_imgs,
-                self.feat_extractor,
-                self.tokenizer,
-                self.hparams.max_length,
+                caption_file=self.hparams.val_json,
+                image_dir=self.hparams.val_imgs,
+                feature_extractor=self.feat_extractor,
+                tokenizer=self.tokenizer,
+                max_length=self.hparams.max_length,
             )
 
     # ------------------------------------------------------------------
