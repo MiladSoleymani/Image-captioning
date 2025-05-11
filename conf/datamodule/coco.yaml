@@ -1,7 +1,7 @@
 _target_: img_cap.data.coco_datamodule.COCODataModule
-train_json: /kaggle/input/coco-image-caption/annotations_trainval2017/annotations/captions_train2017.json
+train_json: /kaggle/input/coco-image-caption/annotations_trainval2014/annotations/captions_train2014.json
 val_json:   /kaggle/input/coco-image-caption/annotations_trainval2017/annotations/captions_val2017.json
-train_imgs: /kaggle/input/coco-image-caption/train2017/train2017
+train_imgs: /kaggle/input/coco-image-caption/train2014/train2014
 val_imgs: /kaggle/input/coco-image-caption/val2017/val2017
 batch_size: 16
 num_workers: 4
