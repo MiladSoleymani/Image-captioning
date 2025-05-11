@@ -92,6 +92,7 @@ class COCOCaptionDataset(Dataset):
         pix = self.img_processor(images=image, return_tensors="pt")
 
         # ❷ Tokenize caption
+        print("self.tokenizer", self.tokenizer)
         text = self.tokenizer(
             caption,
             padding="max_length",
