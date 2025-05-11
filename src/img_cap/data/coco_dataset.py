@@ -9,7 +9,7 @@ from torch.utils.data import Dataset
 from transformers import AutoImageProcessor, PreTrainedTokenizer
 
 
-class CocoCaptionDataset(Dataset):
+class COCOCaptionDataset(Dataset):
     """
     Minimal COCO-style caption dataset that
     * keeps only captions whose image file actually exists
