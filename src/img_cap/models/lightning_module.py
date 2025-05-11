@@ -19,13 +19,8 @@ class CaptionLightningModule(pl.LightningModule):
     # ------------------------------------------------------------------
     def forward(self, pixel_values, input_ids, attention_mask):
 
-        print(pixel_values)
-        print(input_ids)
-        print(attention_mask)
+        pixel_values = pixel_values["pixel_values"]
 
-        pixel_values = pixel_values["image_features"]["pixel_values"]
-        input_ids = input_ids["input_ids"]
-        attention_mask = attention_mask["attention_mask"]
         return self.model(pixel_values, input_ids, attention_mask)
 
     # ------------------------------------------------------------------
