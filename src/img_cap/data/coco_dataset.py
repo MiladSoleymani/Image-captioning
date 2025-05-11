@@ -52,7 +52,6 @@ class COCOCaptionDataset(Dataset):
         self.id2file: Dict[int, Path] = {}
         for img in meta["images"]:
             p = self.image_dir / img["file_name"]
-            print(p)
             if p.is_file():  # ✅ file exists
                 self.id2file[img["id"]] = p
             # else: silently drop or log; depends on your needs
