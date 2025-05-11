@@ -56,6 +56,7 @@ class COCOCaptionDataset(Dataset):
             if p.is_file():  # ✅ file exists
                 self.id2file[img["id"]] = p
             # else: silently drop or log; depends on your needs
+        print(self.id2file)
 
         # 3) Build (image_id, caption) records
         if sample_one_caption:
