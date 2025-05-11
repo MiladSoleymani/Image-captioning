@@ -56,9 +56,6 @@ class COCOCaptionDataset(Dataset):
                 self.id2file[img["id"]] = p
             # else: silently drop or log; depends on your needs
 
-        from itertools import islice
-
-        self.id2file = dict(islice(self.id2file.items(), 10))
         # 3) Build (image_id, caption) records
         if sample_one_caption:
             # ‣ one caption per annotation (same as original behaviour)
