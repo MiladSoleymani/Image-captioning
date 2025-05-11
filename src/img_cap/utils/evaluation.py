@@ -13,7 +13,7 @@ def _tok(text: str):
 
 
 def bleu_score_batch(model, batch, device) -> List[float]:
-    pix = batch["pixel_values"].to(device)
+    pix = batch["pixel_values"]["pixel_values"].to(device)
     refs = batch["input_ids"]
     tokenizer = model.tokenizer
     scores: List[float] = []
